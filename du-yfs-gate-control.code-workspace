@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"runOnSave.commands": [
+			{
+				"match": ".*",
+				"command": "make test",
+				"runIn": "terminal"
+			}
+		],
+		"editor.formatOnSave": true,
+		"files.autoSave": "onFocusChange",
+		"Lua.runtime.path": [
+			"?.lua",
+			"?/init.lua",
+			"src/?.lua"
+		],
+		"Lua.workspace.library": [
+			"external/du-libs/",
+			"external/du-render",
+			"${3rd}/luassert/library",
+			"${3rd}/busted/library"
+		]
+	},
+}

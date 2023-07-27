@@ -1,0 +1,41 @@
+{
+  "cli": {
+    "fmtVersion": 3
+  },
+  "name": "YFS Gate Control",
+  "description": "YFS Gate Control",
+  "sourcePath": "src",
+  "outputPath": "out",
+  "libs": [
+    {
+      "id": "du-libs",
+      "type": "project",
+      "path": "external/du-libs"
+    }
+  ],
+  "builds": {
+    "GateControl": {
+      "name": "GateControl",
+      "type": "control",
+      "slots": {
+        "receiver": {
+          "name": "receiver",
+          "type": "receiver"
+        }
+      }
+    }
+  },
+  "targets": {
+    "development": {
+      "name": "development",
+      "minify": false,
+      "compress": false
+    },
+    "release": {
+      "name": "release",
+      "minify": true,
+      "compress": true
+    }
+  },
+  "internalPaths": []
+}

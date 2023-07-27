@@ -1,0 +1,17 @@
+{
+    "Lua.workspace.library": [
+        "external/du-stream/",
+        "${3rd}/luassert/library",
+        "${3rd}/busted/library"
+    ],
+    "Lua.runtime.path": [
+        "?.lua",
+        "?/init.lua",
+        "src/?.lua"
+    ],
+    "Lua.diagnostics.globals": [
+        "library",
+        "system",
+        "unit"
+    ]
+}

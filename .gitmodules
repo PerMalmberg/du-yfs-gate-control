@@ -1,0 +1,3 @@
+[submodule "external/du-stream"]
+	path = external/du-stream
+	url = git@github.com:PerMalmberg/du-stream.git
