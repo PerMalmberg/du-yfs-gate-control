@@ -13,11 +13,10 @@ jobs:
     - name: Install tools
       run: |
         set -e -o pipefail
-        sudo apt install xsel -y
         ./external/du-stream/external/du-unit-testing/install_tools.sh
     - name: Run CI Tests
       run: |
-        make release
+        make release-ci
     - name: Release
       uses: softprops/action-gh-release@v0.1.15
       with:

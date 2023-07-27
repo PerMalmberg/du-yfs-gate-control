@@ -20,3 +20,6 @@ test:
 release: clean
 	@LUA_PATH="$(LUA_PATH)" du-lua build --copy=release/GateControl
 
+release-ci: clean
+	@LUA_PATH="$(LUA_PATH)" du-lua build
+
