@@ -16,7 +16,7 @@ jobs:
         ./external/du-stream/external/du-unit-testing/install_tools.sh
     - name: Run CI Tests
       run: |
-        make release-ci
+        make release
     - name: Release
       uses: softprops/action-gh-release@v0.1.15
       with:
