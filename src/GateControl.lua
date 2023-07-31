@@ -42,40 +42,54 @@ function Worker.New()
 
     local rxtx = RxTx.New(tx, rx, commChannel, false)
 
-    ---@param data { topic:string, data:{ desiredDoorState:string } }
+    local function shutdown()
+        unit.setTimer("shutdown", 0.5)
+    end
+
+    unit:onEvent("onTimer", function(_, id)
+        if id == "shutdown" then
+            unit.exit()
+        end
+    end)
+
+    unit:onEvent("onStop", function()
+        hold.deactivate()
+    end)
+
+    ---@param data { topic:string, data:{ desiredState:boolean } }
     function s.OnData(data)
         local topic = data.topic
         local d = data.data
 
         if topic ~= "GateControl" or not d then
-            system.print("Invalid data receiver")
+            system.print("Invalid data received")
             return
         end
 
-        local openGates = d.desiredDoorState ~= "closed"
-        if openGates then
+        if d.desiredState then
             gates.activate()
         else
             gates.deactivate()
         end
+
+        stream.Write({ topic = "GateControl", data = { state = d.desiredState } })
     end
 
     function s.OnTimeout(timeout, stream)
         if timeout then
-            hold.deactivate()
-            unit.exit()
+            shutdown()
         end
     end
 
     function s.RegisterStream(stream)
-
+        -- NOP
     end
 
     function s.Tick()
         stream.Tick()
     end
 
-    stream = Stream.New(rxtx, s, 1)
+    stream = Stream.New(rxtx, s, 0.5)
 
     return setmetatable(s, Worker)
 end
