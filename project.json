@@ -9,7 +9,7 @@
   "libs": [
     {
       "id": "du-libs",
-      "type": "project",
+      "type": "raw",
       "path": "external/du-libs"
     }
   ],
@@ -21,6 +21,18 @@
         "receiver": {
           "name": "receiver",
           "type": "receiver"
+        },
+        "emitter": {
+          "name": "emitter",
+          "type": "emitter"
+        },
+        "hold": {
+          "name": "hold",
+          "type": "pressable"
+        },
+        "gates": {
+          "name": "gates",
+          "type": "pressable"
         }
       }
     }
